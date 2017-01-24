@@ -44,7 +44,7 @@ def shutdown():
     try:
         os.mkdir(DATA_DIR)
     except FileExistsError:
-        pass # Ignore - if directory exists, don't need to do anything. 
+        pass # Ignore - if directory exists, don't need to do anything.
 
     with open(BOOKS_FILE_NAME, 'w') as f:
         f.write(output_data)
@@ -75,6 +75,15 @@ def add_book(book):
     book.id = generate_id()
     book_list.append(book)
 
+def delete_book(book_id):
+    '''Remove unread book from db'''
+    global book_list
+
+    for book in book_list:
+
+        if book.id == book_id:
+            book_list.remove(book)
+    
 
 def generate_id():
     global counter
@@ -95,7 +104,17 @@ def set_read(book_id, read):
 
     return False # return False if book id is not found
 
+def set_delete(book_id, read):
+    '''Delete book with given book_id. Return True if book is found in DB and update is made, False otherwise'''
+    global book_list
 
+    for book in book_list:
+
+        if book.id == book_id:
+            delete_book(book_id)
+            return True
+
+    return False # returns False if book id is not found
 
 def make_book_list(string_from_file):
     ''' turn the string from the file into a list of Book objects'''

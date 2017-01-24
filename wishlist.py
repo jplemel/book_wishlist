@@ -18,12 +18,26 @@ def handle_choice(choice):
     elif choice == '4':
         new_book()
 
+    elif choice == '5':
+        delete_unread()
+
     elif choice == 'q':
         quit()
 
     else:
         ui.message('Please enter a valid selection')
 
+def delete_unread():
+    '''Get choice from user, edit datastore, display success/error'''
+
+    book_id = ui.ask_for_book_id()
+
+    if datastore.set_delete(book_id,True):
+        ui.message('Successfully removed book')
+        datastore.delete_book(book_id)
+        
+    else:
+        ui.message('Book id not found in database')
 
 def show_unread():
     '''Fetch and show all unread books'''

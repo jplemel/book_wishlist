@@ -122,7 +122,7 @@ def set_delete(book_id, read):#(JEN)
 
     return False # returns False if book id is not found
 
-def edit_book(book_id, read):#(JEN)
+def edit_book(book_id):#(JEN)
     '''Update the book's author/title with the given book_id. Return true if book is found in DB and update is made, False otherwise.'''
 
     global book_list

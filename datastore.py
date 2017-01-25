@@ -18,7 +18,7 @@ def setup():
 
     global counter
 
-    # if there is file we get None returned
+    # if there is no file we get None returned
 
     book_data = fileio.read_from_file(BOOKS_FILE_NAME)
 

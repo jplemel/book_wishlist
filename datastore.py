@@ -152,8 +152,7 @@ def make_book_list(json_string_from_file):
     books_str = json.loads(json_string_from_file)
 
     for data in books_str:
-
-        book = Book(data["title"], data["author"], data["read"], data['read_date'], int(data["id"]))
+        book = Book(data["title"], data["author"], data["read"] == 'True', data['read_date'], int(data["id"]))
         book_list.append(book)
 
 
@@ -164,9 +163,9 @@ def make_output_data():
 
     output_data = []
 
-    # example json data [{"title": book.title, "author": book.author, "read": book.read. "id": book.id}, ...]
+    # example json data [{"title": book.title, "author": book.author, "read": book.read, 'read_date': book.read_date, "id": book.id}, ...]
     for book in book_list:
-        output = {"title": book.title, "author": book.author, "read": str(book.read), "id": str(book.id)}
+        output = {"title": book.title, "author": book.author, "read": str(book.read), "read_date": book.read_date, "id": str(book.id)}
         output_data.append(output)
 
     all_books_string = json.dumps(output_data)

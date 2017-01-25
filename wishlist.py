@@ -22,7 +22,7 @@ def handle_choice(choice):
         delete_unread()
 
     elif choice == '6': #to edit title/author (JEN)
-        edit_book() #TODO make this happen
+        edit_book()
 
     elif choice == 'q':
         quit()

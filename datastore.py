@@ -135,8 +135,7 @@ def make_changes(book, book_id):
 
     book.id = book_id
     delete_book(book_id) #delete the old record
-    book_list.append(book) #update the record - adds to end of the list, so its out of order, but soon it wont be sorted by id #'s anyway so that wont matter
-
+    book_list.insert((book_id - 1),book) #update the record with .insert(puts it at this position, this is what you're inserting)
 
 
 

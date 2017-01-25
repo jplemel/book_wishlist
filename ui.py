@@ -23,14 +23,23 @@ def display_menu_get_choice():
 def show_list(books):
     ''' Format and display a list of book objects'''
 
+
+
     if len(books) == 0:
         print ('* No books *')
         return
 
+    books.sort(key = lambda book: book.author) #this sorts the books by author before printing
+
     for book in books:
         print(book)
 
+
     print('* {} book(s) *'.format(len(books)))
+
+    #failed attempts at sorting
+    #books.sort(key = book.author)
+    #print(sorted(books, key = lambda book: book.author))
 
 
 def ask_for_book_id():

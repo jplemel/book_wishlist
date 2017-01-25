@@ -138,7 +138,6 @@ def make_changes(book, book_id):
     book_list.insert((book_id - 1),book) #update the record with .insert(puts it at this position, this is what you're inserting)
 
 
-
 def make_book_list(string_from_file):
     ''' turn the string from the file into a list of Book objects'''
 

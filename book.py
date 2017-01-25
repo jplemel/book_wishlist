@@ -15,6 +15,10 @@ class Book:
     def set_id(self, id):
         self.id = id
 
+    def __repr__(self): #JEN
+
+        return repr(self.id, self.title, self.author, self.read)
+
 
     def __str__(self):
         read_str = 'no'

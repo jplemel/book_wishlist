@@ -4,7 +4,7 @@ class Book:
 
     NO_ID = -1
 
-    def __init__(self, title, author, read_date=None, read=False, id=NO_ID):
+    def __init__(self, title, author, read=False, read_date=None, id=NO_ID):
         '''Default book is unread, has no read_date, and has no ID'''
         self.title = title
         self.author = author
@@ -35,7 +35,7 @@ class Book:
 
         if self.read:
             template = 'id: {} Title: {} Author: {} Read: {}, Read Date: {}'
-            return template.format(id_str, self.title, self.author, read_str. self.read_date)
+            return template.format(id_str, self.title, self.author, read_str, self.read_date)
         else:
             template = 'id: {} Title: {} Author: {} Read: {}'
             return template.format(id_str, self.title, self.author, read_str)

@@ -2,6 +2,7 @@
 import os
 from book import Book
 import json
+import fileio
 
 DATA_DIR = 'data'
 BOOKS_FILE_NAME = os.path.join(DATA_DIR, 'wishlist.txt')
@@ -41,17 +42,10 @@ def shutdown():
 
     output_data = make_output_data()
 
-    # Create data directory
-    try:
-        os.mkdir(DATA_DIR)
-    except FileExistsError:
-        pass # Ignore - if directory exists, don't need to do anything.
+    # write data
+    fileio.write_to_file(DATA_DIR, BOOKS_FILE_NAME, output_data)
 
-    with open(BOOKS_FILE_NAME, 'w') as f:
-        f.write(output_data)
-
-    with open(COUNTER_FILE_NAME, 'w') as f:
-        f.write(str(counter))
+    fileio.write_to_file(DATA_DIR, COUNTER_FILE_NAME, str(counter))
 
 
 def get_books(**kwargs):

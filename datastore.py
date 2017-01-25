@@ -145,14 +145,15 @@ def make_changes(book, book_id):
 
 
 def make_book_list(json_string_from_file):
-    ''' turn the string from the file into a list of Book objects'''
+    ''' turn the json string into a list of Book objects'''
 
     global book_list
 
     books_str = json.loads(json_string_from_file)
 
     for data in books_str:
-        book = Book(data["title"], data["author"], data["read"] == 'True', int(data["id"]))
+
+        book = Book(data["title"], data["author"], data["read"], data['read_date'], int(data["id"]))
         book_list.append(book)
 
 

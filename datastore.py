@@ -75,7 +75,7 @@ def add_book(book):
     book.id = generate_id()
     book_list.append(book)
 
-def delete_book(book_id):
+def delete_book(book_id): #(JEN)
     '''Remove unread book from db'''
     global book_list
 
@@ -104,7 +104,7 @@ def set_read(book_id, read):
 
     return False # return False if book id is not found
 
-def set_delete(book_id, read):
+def set_delete(book_id, read):#(JEN)
     '''Delete book with given book_id. Return True if book is found in DB and update is made, False otherwise'''
     global book_list
 
@@ -115,6 +115,30 @@ def set_delete(book_id, read):
             return True
 
     return False # returns False if book id is not found
+
+def edit_book(book_id, read):#(JEN)
+    '''Update the book's author/title with the given book_id. Return true if book is found in DB and update is made, False otherwise.'''
+
+    global book_list
+
+    for book in book_list:
+
+        if book.id == book_id:
+            return True
+
+    return False # return False if book id is not found
+
+
+def make_changes(book, book_id):
+
+    global book_list
+
+    book.id = book_id
+    delete_book(book_id) #delete the old record
+    book_list.append(book) #update the record - adds to end of the list, so its out of order, but soon it wont be sorted by id #'s anyway so that wont matter
+
+
+
 
 def make_book_list(string_from_file):
     ''' turn the string from the file into a list of Book objects'''

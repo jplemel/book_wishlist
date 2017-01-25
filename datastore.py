@@ -1,6 +1,7 @@
 
 import os
 from book import Book
+import json
 
 DATA_DIR = 'data'
 BOOKS_FILE_NAME = os.path.join(DATA_DIR, 'wishlist.txt')
@@ -152,17 +153,17 @@ def make_book_list(string_from_file):
 
 
 def make_output_data():
-    ''' create a string containing all data on books, for writing to output file'''
+    ''' create a json containing all data on books, for writing to output file'''
 
     global book_list
 
     output_data = []
 
+    # example json data [{"title": book.title, "author": book.author, "read": book.read. "id": book.id}, ...]
     for book in book_list:
-        output = [ book.title, book.author, str(book.read), str(book.id) ]
-        output_str = separator.join(output)
-        output_data.append(output_str)
+        output = {"title": book.title, "author": book.author, "read": str(book.read), "id": str(book.id)}
+        output_data.append(output)
 
-    all_books_string = '\n'.join(output_data)
+    all_books_string = json.dump(output_data)
 
     return all_books_string

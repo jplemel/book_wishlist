@@ -83,7 +83,7 @@ def delete_book(book_id):
 
         if book.id == book_id:
             book_list.remove(book)
-    
+
 
 def generate_id():
     global counter

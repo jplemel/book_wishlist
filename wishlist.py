@@ -35,7 +35,7 @@ def delete_unread():
     if datastore.set_delete(book_id,True):
         ui.message('Successfully removed book')
         datastore.delete_book(book_id)
-        
+
     else:
         ui.message('Book id not found in database')
 

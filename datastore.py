@@ -139,16 +139,15 @@ def make_changes(book, book_id):
     book_list.insert((book_id - 1),book) #update the record with .insert(puts it at this position, this is what you're inserting)
 
 
-def make_book_list(string_from_file):
+def make_book_list(json_string_from_file):
     ''' turn the string from the file into a list of Book objects'''
 
     global book_list
 
-    books_str = string_from_file.split('\n')
+    books_str = json.loads(json_string_from_file)
 
-    for book_str in books_str:
-        data = book_str.split(separator)
-        book = Book(data[0], data[1], data[2] == 'True', int(data[3]))
+    for data in books_str:
+        book = Book(data["title"], data["author"], data["read"] == 'True', int(data["id"]))
         book_list.append(book)
 
 
@@ -164,6 +163,6 @@ def make_output_data():
         output = {"title": book.title, "author": book.author, "read": str(book.read), "id": str(book.id)}
         output_data.append(output)
 
-    all_books_string = json.dump(output_data)
+    all_books_string = json.dumps(output_data)
 
     return all_books_string

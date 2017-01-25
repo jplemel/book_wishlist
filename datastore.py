@@ -3,6 +3,7 @@ import os
 from book import Book
 import json
 import fileio
+import datetime
 
 DATA_DIR = 'data'
 BOOKS_FILE_NAME = os.path.join(DATA_DIR, 'wishlist.txt')
@@ -98,7 +99,13 @@ def set_read(book_id, read):
     for book in book_list:
 
         if book.id == book_id:
+
             book.read = True
+
+            # https://docs.python.org/3/library/datetime.html#date-objects
+            # date format 'YYYY-MM-DD'
+            book.read_date = datetime.date.today().__str__()
+
             return True
 
     return False # return False if book id is not found

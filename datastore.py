@@ -18,22 +18,26 @@ def setup():
 
     global counter
 
-    try :
-        with open(BOOKS_FILE_NAME) as f:
-            data = f.read()
-            make_book_list(data)
-    except FileNotFoundError:
-        # First time program has run. Assume no books.
-        pass
+    # if there is file we get None returned
 
+    book_data = fileio.read_from_file(BOOKS_FILE_NAME)
 
-    try:
-        with open(COUNTER_FILE_NAME) as f:
-            try:
-                counter = int(f.read())
-            except:
-                counter = 0
-    except:
+    if book_data is not None:
+
+        make_book_list(book_data)
+
+    count_data = fileio.read_from_file(COUNTER_FILE_NAME)
+
+    # if we cannot cast book data to int then set it to 0
+    if count_data is not None:
+        try:
+            counter = int(count_data)
+
+        except ValueError:
+
+            counter = 0
+
+    else:
         counter = len(book_list)
 
 

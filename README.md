@@ -6,12 +6,12 @@ ITEC 2905 - Project 2 - Python<br>
 - Show books that have been read
 - Mark book as read
 - Add book to wishlist
+- Sort books by author
+- Edit a book's title/author
+- Delete book from wishlist
 
 <h2>Future Features</h2>
 - Save the date the book was read
-- Delete book from wishlist
-- Edit a book's title/author
-- Sort books by title/author
 - Option to add book already read to wishlist (with alert that it's already been read)
 - Save a rating of a book that has been read
 - Search for a book in the wishlist and/or books that have been read
